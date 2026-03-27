@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Furniture | Modern Furniture for Your Dream Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#FDF8F0',
+                            100: '#F5EDE0',
+                            200: '#E8D9C5',
+                            300: '#D4BE9F',
+                            400: '#B8956E',
+                            500: '#9A7B54',
+                            600: '#7D5E3C',
+                            700: '#5C432A',
+                            800: '#3D2314',
+                            900: '#2C1810',
+                        },
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#C9A962',
+                            600: '#B8942E',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #FDF8F0;
+            --fg: #2C1810;
+            --muted: #7D5E3C;
+            --accent: #C9A962;
+            --card: #FFFFFF;
+            --border: #E8D9C5;
+            --brown-dark: #3D2314;
+            --brown-medium: #5C432A;
+            --cream: #F5EDE0;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1512;
+            --fg: #F5EDE0;
+            --muted: #B8956E;
+            --accent: #D4AF37;
+            --card: #2C2420;
+            --border: #3D352E;
+            --brown-dark: #0F0D0B;
+            --brown-medium: #2C2420;
+            --cream: #3D352E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Background Pattern */
+        .hero-pattern {
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(201, 169, 98, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 169, 98, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 20%, rgba(92, 67, 42, 0.08) 0%, transparent 40%);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #B8942E 100%);
+            color: #2C1810;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--fg);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Card Styles */
+        .product-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(44, 24, 16, 0.12);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-image {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            transition: transform 0.6s ease;
+        }
+
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44, 24, 16, 0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        /* Category Card */
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44, 24, 16, 0.8) 0%, transparent 60%);
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover::after {
+            background: linear-gradient(to top, rgba(201, 169, 98, 0.7) 0%, transparent 60%);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-card img {
+            transition: transform 0.6s ease;
+        }
+
+        /* Star Rating */
+        .stars {
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: #2C1810;
+            font-size: 11px;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.3s ease;
+        }
+
+        /* Sale Badge */
+        .sale-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #C9A962, #B8942E);
+            color: #2C1810;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        /* Input Focus */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.2);
+        }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Feature Card */
+        .feature-card {
+            text-align: center;
+            padding: 32px;
+            background: var(--card);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            background: var(--accent);
+        }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            max-width: 100%;
+            height: 100vh;
+            background: var(--card);
+            box-shadow: -10px 0 50px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Quick View Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card);
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #2C1810;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: none;
+            box-shadow: 0 4px 20px rgba(201, 169, 98, 0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Counter Animation */
+        .counter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--card);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 80px 30px 30px;
+        }
+
+        .mobile-menu.open {
+            left: 0;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            width: 28px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--fg);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { bottom: 0; }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            bottom: 9px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--brown-dark);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1002;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Newsletter Pattern */
+        .newsletter-pattern {
+            background: 
+                linear-gradient(135deg, var(--brown-dark) 0%, #3D2314 100%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A962' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <svg class="w-10 h-10 text-gold-400" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L4 14V26L20 36L36 26V14L20 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M20 4V36M4 14L36 26M36 14L4 26" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="font-display text-2xl font-semibold text-brown-800" style="color: var(--fg);">Luxe Furniture</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="nav-link font-medium" style="color: var(--fg);">Home</a>
+                    <a href="#products" class="nav-link font-medium" style="color: var(--muted);">Products</a>
+                    <a href="#categories" class="nav-link font-medium" style="color: var(--muted);">Categories</a>
+                    <a href="#about" class="nav-link font-medium" style="color: var(--muted);">About</a>
+                    <a href="#contact" class="nav-link font-medium" style="color: var(--muted);">Contact</a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-brown-100 transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 sun-icon" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                        <svg class="w-5 h-5 moon-icon hidden" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Search Toggle -->
+                    <button id="searchToggle" class="p-2 rounded-lg hover:bg-brown-100 transition-colors" aria-label="Search">
+                        <svg class="w-5 h-5" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Cart Button -->
+                    <button id="cartBtn" class="relative p-2 rounded-lg hover:bg-brown-100 transition-colors" aria-label="Shopping cart">
+                        <svg class="w-5 h-5" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span id="cartCount" class="cart-badge hidden">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button id="menuToggle" class="lg:hidden p-2" aria-label="Menu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="flex flex-col gap-6">
+            <a href="#home" class="text-xl font-medium" style="color: var(--fg);">Home</a>
+            <a href="#products" class="text-xl font-medium" style="color: var(--muted);">Products</a>
+            <a href="#categories" class="text-xl font-medium" style="color: var(--muted);">Categories</a>
+            <a href="#about" class="text-xl font-medium" style="color: var(--muted);">About</a>
+            <a href="#contact" class="text-xl font-medium" style="color: var(--muted);">Contact</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="searchOverlay" class="fixed inset-0 bg-black/60 z-50 opacity-0 invisible transition-all duration-300 flex items-start justify-center pt-32">
+        <div class="bg-white w-full max-w-2xl mx-4 rounded-2xl p-6 transform -translate-y-4 transition-transform duration-300" style="background: var(--card);">
+            <div class="flex items-center gap-4">
+                <svg class="w-6 h-6" style="color: var(--muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search products..." class="flex-1 text-lg bg-transparent border-none outline-none" style="color: var(--fg);">
+                <button id="closeSearch" class="p-2 hover:bg-brown-100 rounded-lg">
+                    <svg class="w-5 h-5" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="searchResults" class="mt-6 max-h-96 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center hero-pattern relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-20 right-10 w-72 h-72 bg-gold-400/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 left-10 w-96 h-96 bg-brown-300/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="animate-fade-in-up">
+                        <span class="inline-block px-4 py-2 bg-gold-400/20 text-gold-600 rounded-full text-sm font-medium mb-6" style="color: var(--accent);">New Collection 2024</span>
+                        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6" style="color: var(--fg);">
+                            Modern Furniture for Your <span style="color: var(--accent);">Dream Home</span>
+                        </h1>
+                        <p class="text-lg mb-8 max-w-lg" style="color: var(--muted);">
+                            Discover our curated collection of luxury furniture pieces that combine timeless elegance with modern comfort. Transform your space into a sanctuary of style.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#products" class="btn-primary">Shop Now</a>
+                            <a href="#categories" class="btn-secondary">Explore Collection</a>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="flex gap-12 mt-12">
+                            <div>
+                                <div class="counter" data-target="500">0</div>
+                                <p class="text-sm" style="color: var(--muted);">Products</p>
+                            </div>
+                            <div>
+                                <div class="counter" data-target="10000">0</div>
+                                <p class="text-sm" style="color: var(--muted);">Happy Customers</p>
+                            </div>
+                            <div>
+                                <div class="counter" data-target="15">0</div>
+                                <p class="text-sm" style="color: var(--muted);">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative animate-slide-in" style="animation-delay: 0.3s;">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop" alt="Modern Sofa" class="rounded-3xl shadow-2xl w-full">
+                            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl" style="background: var(--card);">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--accent);">
+                                        <svg class="w-6 h-6 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold" style="color: var(--fg);">Premium Quality</p>
+                                        <p class="text-sm" style="color: var(--muted);">Handcrafted with care</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories Section -->
+        <section id="categories" class="py-24" style="background: var(--cream);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-gold-500 font-medium tracking-wider uppercase">Browse</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color: var(--fg);">Featured Categories</h2>
+                    <p class="mt-4 text-lg max-w-2xl mx-auto" style="color: var(--muted);">Explore our diverse range of furniture categories designed to elevate every room in your home</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="category-card reveal" data-category="Sofas" style="animation-delay: 0.1s;">
+                        <img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=400&h=400&fit=crop" alt="Sofas" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Sofas</h3>
+                            <p class="text-white/80 text-sm">48 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card reveal" data-category="Chairs" style="animation-delay: 0.15s;">
+                        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop" alt="Chairs" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Chairs</h3>
+                            <p class="text-white/80 text-sm">36 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card reveal" data-category="Tables" style="animation-delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1577140917170-285929f55f68?w=400&h=400&fit=crop" alt="Tables" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Tables</h3>
+                            <p class="text-white/80 text-sm">52 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card reveal" data-category="Beds" style="animation-delay: 0.25s;">
+                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop" alt="Beds" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Beds</h3>
+                            <p class="text-white/80 text-sm">28 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card reveal" data-category="Cabinets" style="animation-delay: 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=400&fit=crop" alt="Cabinets" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Cabinets</h3>
+                            <p class="text-white/80 text-sm">34 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card reveal" data-category="Office" style="animation-delay: 0.35s;">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400&h=400&fit=crop" alt="Office Furniture" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 class="font-display text-lg font-semibold text-white">Office</h3>
+                            <p class="text-white/80 text-sm">42 Products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="products" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-gold-500 font-medium tracking-wider uppercase">Our Products</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color: var(--fg);">Featured Products</h2>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-12 reveal">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="all">All Products</button>
+                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="Sofas">Sofas</button>
+                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="Chairs">Chairs</button>
+                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="Tables">Tables</button>
+                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="Beds">Beds</button>
+                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="Cabinets">Cabinets</button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="text-sm" style="color: var(--muted);">Sort by:</label>
+                        <select id="sortSelect" class="px-4 py-2 rounded-lg border text-sm" style="background: var(--card); border-color: var(--border); color: var(--fg);">
+                            <option value="default">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Products will be rendered by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24" style="background: var(--cream);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=700&fit=crop" alt="About Luxe Furniture" class="rounded-3xl shadow-2xl">
+                            <div class="absolute -bottom-8 -right-8 w-48 h-48 rounded-2xl overflow-hidden shadow-xl hidden sm:block">
+                                <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=300&h=300&fit=crop" alt="Craftsmanship" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <span class="text-gold-500 font-medium tracking-wider uppercase">About Us</span>
+                        <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2 mb-6" style="color: var(--fg);">Crafting Excellence Since 2009</h2>
+                        <p class="text-lg mb-6" style="color: var(--muted);">
+                            At Luxe Furniture, we believe that every piece of furniture tells a story. For over 15 years, we've been dedicated to creating furniture that combines timeless elegance with modern functionality.
+                        </p>
+                        <p class="mb-8" style="color: var(--muted);">
+                            Our skilled artisans use only the finest materials and traditional craftsmanship techniques to create pieces that are not only beautiful but built to last. From sustainably sourced hardwoods to premium fabrics, every element is carefully selected to ensure the highest quality.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent);">
+                                    <svg class="w-5 h-5 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold" style="color: var(--fg);">Premium Materials</h4>
+                                    <p class="text-sm" style="color: var(--muted);">Sustainably sourced</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent);">
+                                    <svg class="w-5 h-5 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold" style="color: var(--fg);">Expert Craftsmen</h4>
+                                    <p class="text-sm" style="color: var(--muted);">Skilled artisans</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent);">
+                                    <svg class="w-5 h-5 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold" style="color: var(--fg);">Modern Designs</h4>
+                                    <p class="text-sm" style="color: var(--muted);">Contemporary styles</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent);">
+                                    <svg class="w-5 h-5 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold" style="color: var(--fg);">Affordable Luxury</h4>
+                                    <p class="text-sm" style="color: var(--muted);">Best value prices</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary inline-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-gold-500 font-medium tracking-wider uppercase">Why Choose Us</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color: var(--fg);">The Luxe Difference</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="feature-card reveal" style="animation-delay: 0.1s;">
+                        <div class="feature-icon">
+                            <svg class="w-8 h-8" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Premium Quality</h3>
+                        <p style="color: var(--muted);">Every piece is crafted with meticulous attention to detail using the finest materials available.</p>
+                    </div>
+                    <div class="feature-card reveal" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <svg class="w-8 h-8" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Fast Delivery</h3>
+                        <p style="color: var(--muted);">Free white-glove delivery within 5-7 business days to ensure your furniture arrives safely.</p>
+                    </div>
+                    <div class="feature-card reveal" style="animation-delay: 0.3s;">
+                        <div class="feature-icon">
+                            <svg class="w-8 h-8" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Secure Payment</h3>
+                        <p style="color: var(--muted);">Shop with confidence using our encrypted payment system with multiple secure options.</p>
+                    </div>
+                    <div class="feature-card reveal" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">
+                            <svg class="w-8 h-8" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">24/7 Support</h3>
+                        <p style="color: var(--muted);">Our dedicated support team is always available to assist you with any questions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24" style="background: var(--cream);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-gold-500 font-medium tracking-wider uppercase">Testimonials</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color: var(--fg);">What Our Customers Say</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="testimonial-card reveal" style="animation-delay: 0.1s;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p class="mb-6" style="color: var(--muted);">"Absolutely stunning furniture! The quality exceeded my expectations. The delivery team was professional and set everything up perfectly. Will definitely be ordering again!"</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Sarah Mitchell" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--fg);">Sarah Mitchell</h4>
+                                <p class="text-sm" style="color: var(--muted);">Interior Designer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal" style="animation-delay: 0.2s;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p class="mb-6" style="color: var(--muted);">"The modern sofa I purchased is the centerpiece of my living room. The craftsmanship is impeccable, and it's incredibly comfortable. Best furniture investment I've made!"</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="James Anderson" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--fg);">James Anderson</h4>
+                                <p class="text-sm" style="color: var(--muted);">Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal" style="animation-delay: 0.3s;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p class="mb-6" style="color: var(--muted);">"From the moment I walked into the showroom to the final delivery, the experience was exceptional. The staff helped me choose pieces that perfectly match my home's aesthetic."</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Emily Chen" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--fg);">Emily Chen</h4>
+                                <p class="text-sm" style="color: var(--muted);">Architect</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-24 newsletter-pattern relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold-400 to-transparent"></div>
+            </div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center reveal">
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold text-white mb-4">Stay Updated</h2>
+                    <p class="text-lg text-white/70 mb-8">Subscribe to our newsletter for exclusive offers, new arrivals, and design inspiration.</p>
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl text-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:bg-white/20 focus:border-gold-400 transition-all">
+                        <button type="submit" class="px-8 py-4 bg-gold-400 text-brown-900 font-semibold rounded-xl hover:bg-gold-500 transition-all transform hover:scale-105">Subscribe</button>
+                    </form>
+                    <p id="newsletterMessage" class="mt-4 text-sm hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-gold-500 font-medium tracking-wider uppercase">Contact Us</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color: var(--fg);">Get in Touch</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="reveal">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contactName" class="block text-sm font-medium mb-2" style="color: var(--fg);">Name</label>
+                                    <input type="text" id="contactName" required class="w-full px-4 py-3 rounded-xl border transition-all" style="background: var(--card); border-color: var(--border); color: var(--fg);">
+                                </div>
+                                <div>
+                                    <label for="contactEmail" class="block text-sm font-medium mb-2" style="color: var(--fg);">Email</label>
+                                    <input type="email" id="contactEmail" required class="w-full px-4 py-3 rounded-xl border transition-all" style="background: var(--card); border-color: var(--border); color: var(--fg);">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contactSubject" class="block text-sm font-medium mb-2" style="color: var(--fg);">Subject</label>
+                                <input type="text" id="contactSubject" required class="w-full px-4 py-3 rounded-xl border transition-all" style="background: var(--card); border-color: var(--border); color: var(--fg);">
+                            </div>
+                            <div>
+                                <label for="contactMessage" class="block text-sm font-medium mb-2" style="color: var(--fg);">Message</label>
+                                <textarea id="contactMessage" rows="5" required class="w-full px-4 py-3 rounded-xl border transition-all resize-none" style="background: var(--card); border-color: var(--border); color: var(--fg);"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full sm:w-auto">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="reveal" style="animation-delay: 0.2s;">
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--cream);">
+                                    <svg class="w-6 h-6" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1" style="color: var(--fg);">Visit Our Showroom</h3>
+                                    <p style="color: var(--muted);">123 Design District, Suite 400<br>New York, NY 10001</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--cream);">
+                                    <svg class="w-6 h-6" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1" style="color: var(--fg);">Call Us</h3>
+                                    <p style="color: var(--muted);">+1 (555) 123-4567<br>Mon-Sat: 9AM - 7PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--cream);">
+                                    <svg class="w-6 h-6" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1" style="color: var(--fg);">Email Us</h3>
+                                    <p style="color: var(--muted);">info@luxefurniture.com<br>support@luxefurniture.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div class="mt-8 rounded-2xl overflow-hidden h-64" style="background: var(--cream);">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1629794729405!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16" style="background: var(--brown-dark);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <svg class="w-10 h-10 text-gold-400" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 4L4 14V26L20 36L36 26V14L20 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 4V36M4 14L36 26M36 14L4 26" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="font-display text-2xl font-semibold text-white">Luxe Furniture</span>
+                    </div>
+                    <p class="text-white/60 mb-6">Creating beautiful spaces with premium furniture since 2009. Quality craftsmanship for your dream home.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-gold-400 hover:text-brown-900 transition-all" aria-label="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-gold-400 hover:text-brown-900 transition-all" aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-gold-400 hover:text-brown-900 transition-all" aria-label="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-gold-400 hover:text-brown-900 transition-all" aria-label="Pinterest">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-lg font-semibold text-white mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-white/60 hover:text-gold-400 transition-colors">Home</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-gold-400 transition-colors">Products</a></li>
+                        <li><a href="#categories" class="text-white/60 hover:text-gold-400 transition-colors">Categories</a></li>
+                        <li><a href="#about" class="text-white/60 hover:text-gold-400 transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-white/60 hover:text-gold-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-lg font-semibold text-white mb-6">Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-white/60 hover:text-gold-400 transition-colors">Sofas & Couches</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-gold-400 transition-colors">Chairs & Seating</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-gold-400 transition-colors">Tables & Desks</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-gold-400 transition-colors">Beds & Headboards</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-gold-400 transition-colors">Storage & Cabinets</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-lg font-semibold text-white mb-6">Payment Methods</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="px-4 py-2 bg-white/10 rounded-lg">
+                            <svg class="h-6 text-white" viewBox="0 0 38 24" fill="currentColor"><path d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3Z" opacity="0.07"/><path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32Z" fill="#fff"/><path d="M15 19c3.9 0 7-3.1 7-7s-3.1-7-7-7-7 3.1-7 7 3.1 7 7 7Z" fill="#EB001B"/><path d="M23 19c3.9 0 7-3.1 7-7s-3.1-7-7-7-7 3.1-7 7 3.1 7 7 7Z" fill="#F79E1B"/><path d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.2-3 3.3-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7Z" fill="#FF5F00"/></svg>
+                        </div>
+                        <div class="px-4 py-2 bg-white/10 rounded-lg">
+                            <svg class="h-6 text-white" viewBox="0 0 38 24" fill="currentColor"><path d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3Z" opacity="0.07"/><path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32Z" fill="#fff"/><path d="M12 12c0-1.3.3-2.5.8-3.6L9.5 5.1C8.5 7.1 8 9.5 8 12s.5 4.9 1.5 6.9l3.3-3.3c-.5-1.1-.8-2.3-.8-3.6Z" fill="#34A853"/><path d="M12 12c0-2.2.9-4.2 2.3-5.6L19 5c-2.5-2.5-6-4-9.9-4C5.5 1 1.9 3.3 0 6.8L5.1 12 0 17.2c1.9 3.5 5.5 5.8 9.1 5.8 3.9 0 7.4-1.5 9.9-4l-4.7-1.4C12.9 16.2 12 14.2 12 12Z" fill="#FBBC05"/><path d="M38 12c0 5.5-4.5 10-10 10-2.5 0-4.8-.9-6.6-2.4l3.4-3.4c1.7 1.3 3.9 2 6.2 1.5 2.1-.4 3.9-1.8 4.8-3.7h-7.9v-4h12.1c.6 1.3 1 2.6 1 4Z" fill="#4285F4"/></svg>
+                        </div>
+                        <div class="px-4 py-2 bg-white/10 rounded-lg flex items-center">
+                            <span class="text-white text-sm font-medium">PayPal</span>
+                        </div>
+                        <div class="px-4 py-2 bg-white/10 rounded-lg flex items-center">
+                            <span class="text-white text-sm font-medium">Apple Pay</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-white/40 text-sm">Secure payments powered by Stripe</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2024 Luxe Furniture. All rights reserved.</p>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-white/40 hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <aside id="cartSidebar" class="cart-sidebar">
+        <div class="p-6 border-b" style="border-color: var(--border);">
+            <div class="flex items-center justify-between">
+                <h2 class="font-display text-2xl font-semibold" style="color: var(--fg);">Your Cart</h2>
+                <button id="closeCart" class="p-2 hover:bg-brown-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" style="color: var(--fg);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div class="p-6 border-t" style="border-color: var(--border); background: var(--cream);">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-medium" style="color: var(--fg);">Subtotal</span>
+                <span id="cartTotal" class="font-display text-2xl font-semibold" style="color: var(--fg);">$0.00</span>
+            </div>
+            <button id="checkoutBtn" class="btn-primary w-full py-4">Proceed to Checkout</button>
+            <button id="clearCart" class="w-full py-3 mt-2 text-sm font-medium hover:text-gold-500 transition-colors" style="color: var(--muted);">Clear Cart</button>
+        </div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="quickViewContent" class="grid md:grid-cols-2">
+                <!-- Content will be rendered by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <script>
+        // ==========================================
+        // DATA
+        // ==========================================
+        const products = [
+            { id: 1, name: "Modern Cloud Sofa", price: 2499, category: "Sofas", rating: 5, image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop", sale: true, description: "Experience ultimate comfort with our Cloud Sofa featuring premium velvet upholstery and high-density foam cushions." },
+            { id: 2, name: "Wooden Dining Table", price: 1899, category: "Tables", rating: 4, image: "https://images.unsplash.com/photo-1577140917170-285929f55f68?w=600&h=600&fit=crop", sale: false, description: "Crafted from solid oak wood, this dining table seats 6-8 people comfortably with its extendable design." },
+            { id: 3, name: "Luxury King Bed", price: 3299, category: "Beds", rating: 5, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop", sale: false, description: "A stunning centerpiece for your bedroom with upholstered headboard and premium mattress support system." },
+            { id: 4, name: "Executive Office Chair", price: 899, category: "Chairs", rating: 4, image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&h=600&fit=crop", sale: true, description: "Ergonomic design with lumbar support, adjustable height, and breathable mesh back for all-day comfort." },
+            { id: 5, name: "Modern TV Cabinet", price: 1299, category: "Cabinets", rating: 4, image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&h=600&fit=crop", sale: false, description: "Sleek entertainment unit with cable management and ample storage for all your media devices." },
+            { id: 6, name: "Marble Coffee Table", price: 799, category: "Tables", rating: 5, image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&h=600&fit=crop", sale: false, description: "Elegant marble top with brass-finished legs, perfect for modern living rooms." },
+            { id: 7, name: "Open Bookshelf", price: 649, category: "Cabinets", rating: 4, image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop", sale: false, description: "Industrial-style open shelving unit with metal frame and wooden shelves." },
+            { id: 8, name: "Recliner Chair", price: 1599, category: "Chairs", rating: 5, image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop", sale: true, description: "Premium leather recliner with massage function and heated seats for ultimate relaxation." },
+            { id: 9, name: "Velvet Accent Sofa", price: 1899, category: "Sofas", rating: 4, image: "https://images.unsplash.com/photo-1550254478-ead40cc54513?w=600&h=600&fit=crop", sale: false, description: "Compact velvet sofa perfect for small spaces, featuring tufted back and gold-finished legs." },
+            { id: 10, name: "Minimalist Side Table", price: 349, category: "Tables", rating: 4, image: "https://images.unsplash.com/photo-1499933374294-4584851497cc?w=600&h=600&fit=crop", sale: false, description: "Sleek side table with marble top and geometric metal base." },
+            { id: 11, name: "Platform Bed Frame", price: 1299, category: "Beds", rating: 5, image: "https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?w=600&h=600&fit=crop", sale: false, description: "Modern platform bed with integrated nightstands and LED lighting." },
+            { id: 12, name: "Dining Chair Set", price: 599, category: "Chairs", rating: 4, image: "https://images.unsplash.com/photo-1503602642458-232111445657?w=600&h=600&fit=crop", sale: true, description: "Set of 2 dining chairs with curved back and upholstered seats." }
+        ];
+
+        // ==========================================
+        // STATE
+        // ==========================================
+        let cart = JSON.parse(localStorage.getItem('luxeCart')) || [];
+        let currentFilter = 'all';
+
+        // ==========================================
+        // DOM ELEMENTS
+        // ==========================================
+        const header = document.getElementById('header');
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hamburger = menuToggle.querySelector('.hamburger');
+        const cartBtn = document.getElementById('cartBtn');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        const clearCartBtn = document.getElementById('clearCart');
+        const productsGrid = document.getElementById('productsGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const sortSelect = document.getElementById('sortSelect');
+        const searchToggle = document.getElementById('searchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const themeToggle = document.getElementById('themeToggle');
+        const scrollTopBtn = document.getElementById('scrollTop');
+        const quickViewModal = document.getElementById('quickViewModal');
+        const quickViewContent = document.getElementById('quickViewContent');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterEmail = document.getElementById('newsletterEmail');
+        const newsletterMessage = document.getElementById('newsletterMessage');
+        const contactForm = document.getElementById('contactForm');
+
+        // ==========================================
+        // INITIALIZE
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            initScrollReveal();
+            initCounters();
+        });
+
+        // ==========================================
+        // RENDER PRODUCTS
+        // ==========================================
+        function renderProducts(productsToRender = products) {
+            const filtered = currentFilter === 'all' 
+                ? productsToRender 
+                : productsToRender.filter(p => p.category === currentFilter);
+            
+            productsGrid.innerHTML = filtered.map((product, index) => `
+                <div class="product-card reveal" style="animation-delay: ${index * 0.05}s;" data-id="${product.id}">
+                    ${product.sale ? '<span class="sale-badge">Sale</span>' : ''}
+                    <div class="product-image relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full aspect-square object-cover">
+                        <div class="product-overlay">
+                            <button onclick="openQuickView(${product.id})" class="px-4 py-2 bg-white text-brown-900 rounded-lg font-medium hover:bg-gold-400 transition-colors">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-sm" style="color: var(--muted);">${product.category}</span>
+                        <h3 class="font-display text-lg font-semibold mt-1" style="color: var(--fg);">${product.name}</h3>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="font-display text-xl font-bold" style="color: var(--accent);">$${product.price.toLocaleString()}</span>
+                            <div class="stars text-sm">${'&#9733;'.repeat(product.rating)}${'&#9734;'.repeat(5 - product.rating)}</div>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="btn-primary w-full mt-4 py-3">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-init scroll reveal for new elements
+            initScrollReveal();
+        }
+
+        // ==========================================
+        // FILTER & SORT
+        // ==========================================
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'transparent';
+                    b.style.color = 'var(--muted)';
+                });
+                btn.classList.add('active');
+                btn.style.background = 'var(--accent)';
+                btn.style.color = '#2C1810';
+                currentFilter = btn.dataset.filter;
+                renderProducts();
+            });
+        });
+
+        // Initialize first filter button style
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) {
+            activeBtn.style.background = 'var(--accent)';
+            activeBtn.style.color = '#2C1810';
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            let sorted = [...products];
+            switch(e.target.value) {
+                case 'price-low':
+                    sorted.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    sorted.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    sorted.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                default:
+                    sorted = products;
+            }
+            renderProducts(sorted);
+        });
+
+        // ==========================================
+        // CART FUNCTIONS
+        // ==========================================
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            saveCart();
+            updateCartUI();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCartUI();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    saveCart();
+                    updateCartUI();
+                }
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('luxeCart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Update cart badge
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            // Update cart total
+            cartTotal.textContent = `$${totalPrice.toLocaleString()}`;
+            
+            // Render cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center py-12">
+                        <svg class="w-16 h-16 mx-auto mb-4" style="color: var(--border);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <p class="text-lg font-medium" style="color: var(--fg);">Your cart is empty</p>
+                        <p class="text-sm mt-2" style="color: var(--muted);">Add some beautiful furniture!</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex gap-4 mb-4 pb-4 border-b" style="border-color: var(--border);">
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-medium" style="color: var(--fg);">${item.name}</h4>
+                            <p class="text-sm" style="color: var(--muted);">$${item.price.toLocaleString()}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 rounded flex items-center justify-center" style="background: var(--cream);">-</button>
+                                <span class="w-8 text-center" style="color: var(--fg);">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 rounded flex items-center justify-center" style="background: var(--cream);">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-sm hover:text-red-500 transition-colors" style="color: var(--muted);">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Cart sidebar toggle
+        cartBtn.addEventListener('click', () => {
+            cartSidebar.classList.add('open');
+            cartOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeCartSidebar() {
+            cartSidebar.classList.remove('open');
+            cartOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        closeCart.addEventListener('click', closeCartSidebar);
+        cartOverlay.addEventListener('click', closeCartSidebar);
+
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            saveCart();
+            updateCartUI();
+            showToast('Cart cleared!');
+        });
+
+        // ==========================================
+        // QUICK VIEW MODAL
+        // ==========================================
+        function openQuickView(id) {
+            const product = products.find(p => p.id === id);
+            quickViewContent.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full aspect-square object-cover">
+                <div class="p-8">
+                    <span class="text-sm" style="color: var(--muted);">${product.category}</span>
+                    <h2 class="font-display text-3xl font-bold mt-2" style="color: var(--fg);">${product.name}</h2>
+                    <div class="flex items-center gap-2 mt-4">
+                        <span class="stars">${'&#9733;'.repeat(product.rating)}${'&#9734;'.repeat(5 - product.rating)}</span>
+                        <span class="text-sm" style="color: var(--muted);">(${product.rating}.0)</span>
+                    </div>
+                    <p class="font-display text-3xl font-bold mt-4" style="color: var(--accent);">$${product.price.toLocaleString()}</p>
+                    <p class="mt-4" style="color: var(--muted);">${product.description}</p>
+                    <div class="flex gap-4 mt-8">
+                        <button onclick="addToCart(${product.id}); closeQuickView();" class="btn-primary flex-1">Add to Cart</button>
+                        <button onclick="closeQuickView()" class="btn-secondary">Close</button>
+                    </div>
+                </div>
+            `;
+            quickViewModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuickView() {
+            quickViewModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        quickViewModal.addEventListener('click', (e) => {
+            if (e.target === quickViewModal) {
+                closeQuickView();
+            }
+        });
+
+        // ==========================================
+        // SEARCH
+        // ==========================================
+        searchToggle.addEventListener('click', () => {
+            searchOverlay.style.opacity = '1';
+            searchOverlay.style.visibility = 'visible';
+            searchOverlay.querySelector('div').style.transform = 'translateY(0)';
+            searchInput.focus();
+        });
+
+        closeSearch.addEventListener('click', () => {
+            searchOverlay.style.opacity = '0';
+            searchOverlay.style.visibility = 'hidden';
+            searchOverlay.querySelector('div').style.transform = 'translateY(-16px)';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 0) {
+                const results = products.filter(p => 
+                    p.name.toLowerCase().includes(query) || 
+                    p.category.toLowerCase().includes(query)
+                );
+                searchResults.innerHTML = results.length > 0 
+                    ? results.map(p => `
+                        <div class="flex gap-4 p-4 hover:bg-brown-100 rounded-lg cursor-pointer transition-colors" onclick="openQuickView(${p.id}); closeSearch.click();">
+                            <img src="${p.image}" alt="${p.name}" class="w-16 h-16 object-cover rounded-lg">
+                            <div>
+                                <h4 class="font-medium" style="color: var(--fg);">${p.name}</h4>
+                                <p class="text-sm" style="color: var(--muted);">${p.category}</p>
+                                <p class="font-semibold" style="color: var(--accent);">$${p.price.toLocaleString()}</p>
+                            </div>
+                        </div>
+                    `).join('')
+                    : `<p class="text-center py-8" style="color: var(--muted);">No products found</p>`;
+            } else {
+                searchResults.innerHTML = '';
+            }
+        });
+
+        // ==========================================
+        // MOBILE MENU
+        // ==========================================
+        menuToggle.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ==========================================
+        // THEME TOGGLE
+        // ==========================================
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+
+        function setTheme(dark) {
+            if (dark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            setTheme(!isDark);
+            localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        }
+
+        // ==========================================
+        // SCROLL EFFECTS
+        // ==========================================
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Header background
+            if (scrollY > 50) {
+                header.style.background = 'var(--card)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'transparent';
+                header.style.boxShadow = 'none';
+            }
+            
+            // Scroll to top button
+            if (scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==========================================
+        // SCROLL REVEAL
+        // ==========================================
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // ==========================================
+        // COUNTER ANIMATION
+        // ==========================================
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current).toLocaleString() + (target >= 1000 ? '+' : '');
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString() + (target >= 1000 ? '+' : '');
+                            }
+                        };
+                        
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // ==========================================
+        // TOAST NOTIFICATION
+        // ==========================================
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ==========================================
+        // FORMS
+        // ==========================================
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterEmail.value;
+            
+            if (!email || !email.includes('@')) {
+                newsletterMessage.textContent = 'Please enter a valid email address.';
+                newsletterMessage.className = 'mt-4 text-sm text-red-500';
+                newsletterMessage.classList.remove('hidden');
+                return;
+            }
+            
+            newsletterMessage.textContent = 'Thank you for subscribing!';
+            newsletterMessage.className = 'mt-4 text-sm text-green-500';
+            newsletterMessage.classList.remove('hidden');
+            newsletterEmail.value = '';
+            
+            setTimeout(() => {
+                newsletterMessage.classList.add('hidden');
+            }, 3000);
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Message sent successfully!');
+            contactForm.reset();
+        });
+
+        // ==========================================
+        // CATEGORY CLICK
+        // ==========================================
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.dataset.category;
+                currentFilter = category;
+                
+                // Update filter buttons
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.style.background = 'transparent';
+                    btn.style.color = 'var(--muted)';
+                    
+                    if (btn.dataset.filter === category) {
+                        btn.classList.add('active');
+                        btn.style.background = 'var(--accent)';
+                        btn.style.color = '#2C1810';
+                    }
+                });
+                
+                renderProducts();
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // ==========================================
+        // KEYBOARD NAVIGATION
+        // ==========================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCartSidebar();
+                closeQuickView();
+                searchOverlay.style.opacity = '0';
+                searchOverlay.style.visibility = 'hidden';
+                searchInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
